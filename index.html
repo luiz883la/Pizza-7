@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizza 7 — Pizzaria em Cruzeiro, SP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Barra superior fixa -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#inicio" class="brand-mark">
+        <span class="brand-badge">7</span>
+        <div>
+          <strong>Pizza 7</strong>
+          <small>Cruzeiro &bull; SP</small>
+        </div>
+      </a>
+
+      <nav class="topnav" aria-label="Navegação principal">
+        <a href="#pizzas">Pizzas</a>
+        <a href="#cozinha">Parmegianas &amp; Porções</a>
+        <a href="#extras">Bordas &amp; Extras</a>
+        <a href="#bebidas">Bebidas</a>
+        <a href="#local">Local</a>
+      </nav>
+
+      <a href="https://wa.me/551231441117?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pizza%207%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn-wpp-sm">
+        Pedir no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero de Pizzaria Artesanal -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="hero-pill">Aberto todos os dias &bull; 18h às 23h30</span>
+        <h1>Pizza de verdade, parmegianas e porções no ponto certo.</h1>
+        <p>
+          São <strong>67 sabores</strong> entre salgados e doces nos tamanhos <strong>Grande, Média e Broto</strong>, além de parmegianas, porções, bordas recheadas e bebidas geladas na R. Cap. Avelino Bastos, 1117 &mdash; Centro.
+        </p>
+        <div class="hero-actions">
+          <a href="#pizzas" class="btn-fire">Explorar 67 Sabores</a>
+          <a href="#cozinha" class="btn-ghost">Parmegianas &amp; Porções</a>
+        </div>
+        <ul class="hero-rules">
+          <li><strong>Família (12 pedaços):</strong> +40%</li>
+          <li><strong>Gigante (16 pedaços):</strong> +70%</li>
+          <li><strong>Meio a meio:</strong> valor médio</li>
+        </ul>
+      </div>
+
+      <div class="hero-showcase">
+        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80" alt="Pizza assada na Pizza 7 em Cruzeiro">
+        <div class="showcase-caption">
+          <span>Salão &bull; Retirada &bull; Delivery</span>
+          <strong>Embalagem: Pizza R$ 2,00 | Parmegiana R$ 4,00</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Pizzas (67 sabores) -->
+    <section class="sec" id="pizzas">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">Forno da Casa</span>
+            <h2>Cardápio de Pizzas</h2>
+          </div>
+          <p class="sec-note">
+            Família e Gigante não disponíveis em pizzas da promoção. Meio a meio cobra o valor médio.
+          </p>
+        </div>
+
+        <div class="filter-bar">
+          <input type="search" id="pizzaSearch" class="filter-input" placeholder="Buscar por número, sabor ou ingrediente (ex: 41, picanha, strogonoff, nutella)..." />
+          <div class="filter-pills" id="typeFilter">
+            <button type="button" class="pill-btn active" data-filter="todas">Todas (67)</button>
+            <button type="button" class="pill-btn" data-filter="salgada">Salgadas (57)</button>
+            <button type="button" class="pill-btn" data-filter="doce">Doces (10)</button>
+          </div>
+        </div>
+
+        <div class="count-strip" id="pizzaCount"></div>
+        <div class="pizza-grid" id="pizzaGrid"></div>
+      </div>
+    </section>
+
+    <!-- Parmegianas e Porções -->
+    <section class="sec sec-warm" id="cozinha">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">Servidos na Hora</span>
+            <h2>Parmegianas &amp; Porções</h2>
+          </div>
+          <p class="sec-note">Embalagem para viagem: Parmegiana R$ 4,00 &bull; Pizza R$ 2,00.</p>
+        </div>
+
+        <div class="two-cols">
+          <div class="menu-box">
+            <h3>Parmegianas</h3>
+            <div class="menu-rows" id="parmegianasList"></div>
+          </div>
+
+          <div class="menu-box">
+            <h3>Porções</h3>
+            <div class="menu-rows" id="porcoesList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bordas e Acréscimos -->
+    <section class="sec" id="extras">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">Monte do Seu Jeito</span>
+            <h2>Bordas Recheadas &amp; Acréscimos</h2>
+          </div>
+        </div>
+
+        <div class="extras-cols">
+          <div class="menu-box">
+            <h3>Borda Recheada</h3>
+            <div class="menu-rows" id="bordasList"></div>
+          </div>
+
+          <div class="menu-box">
+            <h3>Acréscimos por Faixa de Preço</h3>
+            <div class="addons-list" id="addonsList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bebidas e Sucos -->
+    <section class="sec sec-warm" id="bebidas">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">Para Acompanhar</span>
+            <h2>Bebidas, Cervejas, Vinhos &amp; Sucos</h2>
+          </div>
+        </div>
+
+        <div class="three-cols">
+          <div class="menu-box">
+            <h3>Bebidas</h3>
+            <div class="menu-rows" id="refriList"></div>
+          </div>
+
+          <div class="menu-box">
+            <h3>Refrescantes / Cervejas</h3>
+            <div class="menu-rows" id="cervejasList"></div>
+          </div>
+
+          <div class="menu-box">
+            <h3>Um Brinde</h3>
+            <div class="menu-rows" id="vinhosList"></div>
+          </div>
+        </div>
+
+        <div class="menu-box juice-box">
+          <div class="juice-header">
+            <div>
+              <h3>Sucos de Polpa &amp; Limonada Suíça</h3>
+              <p>
+                Polpas — Copo: Água R$ 6,00 | Leite R$ 7,00 &bull; Jarra: Água R$ 14,00 | Leite R$ 16,00 &bull; <strong>Limonada Suíça:</strong> Copo R$ 8,00 | Jarra R$ 18,00
+              </p>
+            </div>
+          </div>
+          <div class="juice-cards" id="juicesList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Localização -->
+    <section class="sec" id="local">
+      <div class="wrap">
+        <div class="location-banner">
+          <div>
+            <span class="sec-tag">Cruzeiro &bull; SP</span>
+            <h2>R. Cap. Avelino Bastos, 1117 &mdash; Centro</h2>
+            <p>Aberto todos os dias das 18h às 23h30 &bull; Pizza embalagem viagem R$ 2,00 | Parmegiana R$ 4,00</p>
+          </div>
+          <div class="location-btns">
+            <a href="https://maps.app.goo.gl/TGRqBd1oc373ty1V6" target="_blank" class="btn-ghost-dark">Ver no Google Maps</a>
+            <a href="https://wa.me/551231441117?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Pizza%207%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" class="btn-wpp-sm">Chamar no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span><strong>Pizza 7</strong> &mdash; R. Cap. Avelino Bastos, 1117, Centro, Cruzeiro - SP, 12701-440</span>
+      <span>Todos os dias, 18h às 23h30</span>
+    </div>
+  </footer>
+
+  <!-- Barra da Sacola -->
+  <div class="bag-bar hidden" id="bagBar">
+    <div>
+      <strong id="bagCount">0 itens</strong>
+      <span id="bagTotal">R$ 0,00</span>
+    </div>
+    <button type="button" class="btn-wpp-sm" id="openBagBtn">Ver Pedido</button>
+  </div>
+
+  <!-- Modal de Pedido -->
+  <div class="backdrop" id="bagModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Seu Pedido &mdash; Pizza 7</h3>
+        <button type="button" class="modal-close" id="closeBagBtn">&times;</button>
+      </div>
+      <div id="bagItems"></div>
+      <label class="takeout-row">
+        <input type="checkbox" id="takeoutBox" />
+        <span>Incluir embalagem para viagem (Pizza R$ 2,00 / Parmegiana R$ 4,00)</span>
+      </label>
+      <div class="obs-box">
+        <label for="obsText">Observações (meio a meio, Família/Gigante, endereço):</label>
+        <textarea id="obsText" rows="2" placeholder="Ex: Metade 13 Calabresa / Metade 43 Portuguesa..."></textarea>
+      </div>
+      <div class="modal-foot">
+        <div class="total-line">
+          <span>Total estimado</span>
+          <strong id="modalTotal">R$ 0,00</strong>
+        </div>
+        <button type="button" class="btn-wpp-sm btn-block" id="sendWhatsBtn">Enviar pelo WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = "551231441117";
+
+    const IMG_PIZZA_1 = "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=650&q=80";
+    const IMG_PIZZA_2 = "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=650&q=80";
+    const IMG_PIZZA_3 = "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=650&q=80";
+    const IMG_PIZZA_4 = "https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=650&q=80";
+    const IMG_PIZZA_5 = "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=650&q=80";
+    const IMG_DOCE = "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=650&q=80";
+
+    const PIZZAS = [
+      { num: "01", name: "Abobrinha", prices: [60.00, 53.00, 46.00], desc: "Abobrinha, mussarela, tomate seco, alho e cebola", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "02", name: "Alho e óleo", prices: [47.00, 40.00, 33.00], desc: "Mussarela, alho e cebola", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "03", name: "Argentina", prices: [60.00, 53.00, 46.00], desc: "Calabresa, mussarela, requeijão e cebola", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "04", name: "Atum", prices: [53.00, 46.00, 39.00], desc: "Atum, bacon e cebola", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "05", name: "Bacon", prices: [51.00, 44.00, 37.00], desc: "Bacon e mussarela", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "06", name: "Baiana", prices: [42.00, 35.00, 28.00], desc: "Calabresa moída, pimenta calabresa e cebola", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "07", name: "Batata", prices: [55.00, 48.00, 41.00], desc: "Batata frita, mussarela e parmesão", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "08", name: "Boliviana", prices: [68.00, 61.00, 54.00], desc: "Atum, mussarela, requeijão, ervilha e cebola", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "09", name: "Brasileira", prices: [60.00, 53.00, 46.00], desc: "Mussarela, tomate seco, champignon, pimentão, manjericão e azeitona preta", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "10", name: "Brócolis", prices: [60.00, 53.00, 46.00], desc: "Brócolis, mussarela, bacon, alho e cebola", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "11", name: "Burguer", prices: [64.00, 57.00, 50.00], desc: "Hamburguer, presunto, mussarela, batata palha e milho", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "12", name: "Calabata", prices: [60.00, 53.00, 46.00], desc: "Batata frita, calabresa e mussarela", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "13", name: "Calabresa", prices: [40.00, 33.00, 26.00], desc: "Calabresa e cebola", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "14", name: "Camarão", prices: [80.00, 73.00, 66.00], desc: "Camarão, mussarela e requeijão", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "15", name: "Canadense", prices: [58.00, 51.00, 44.00], desc: "Lombo, requeijão e bacon", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "16", name: "Capixaba", prices: [51.00, 44.00, 37.00], desc: "Calabresa e mussarela", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "17", name: "Carne seca", prices: [78.00, 71.00, 64.00], desc: "Carne seca desfiada, mussarela, requeijão e cebola", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "18", name: "Delícia", prices: [56.00, 49.00, 42.00], desc: "Presunto, mussarela, creme de leite e champignon", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "19", name: "Do Binho", prices: [66.00, 59.00, 52.00], desc: "Lombo canadense, frango, mussarela, requeijão e milho", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "20", name: "Do chefe", prices: [70.00, 63.00, 56.00], desc: "Frango, provolone, requeijão, bacon, gorgonzola e milho", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "21", name: "Do forneiro", prices: [65.00, 58.00, 51.00], desc: "Peito de peru, mussarela, bacon, ovo e tomate", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "22", name: "Doritos", prices: [60.00, 53.00, 46.00], desc: "Mussarela, cheddar e doritos", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "23", name: "Do vovô", prices: [68.00, 61.00, 54.00], desc: "Brócolis, peito de peru, mussarela, bacon e alho", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "24", name: "Escarola", prices: [56.00, 49.00, 42.00], desc: "Escarola, mussarela, bacon e alho", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "25", name: "Fantasia", prices: [60.00, 53.00, 46.00], desc: "Mussarela, requeijão, champignon, bacon e milho", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "26", name: "Florentina", prices: [54.00, 47.00, 40.00], desc: "Mussarela, batata palha e bacon", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "27", name: "Frango", prices: [60.00, 53.00, 46.00], desc: "Frango, mussarela, bacon e ervilha", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "28", name: "Jardineira", prices: [60.00, null, null], desc: "Portuguesa, parisiense, capixaba e mussarela", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "29", name: "Lombinho", prices: [60.00, 53.00, 46.00], desc: "Lombo canadense, mussarela, requeijão e cebola", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "30", name: "Marguerita", prices: [47.00, 40.00, 33.00], desc: "Manjericão, mussarela e tomate", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "31", name: "Mexicana", prices: [43.00, 36.00, 29.00], desc: "Calabresa, bacon, cebola e azeitona preta", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "32", name: "Misto quente", prices: [53.00, 46.00, 39.00], desc: "Presunto, mussarela e tomate", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "33", name: "Mussarela", prices: [46.00, 39.00, 32.00], desc: "Mussarela e tomate", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "34", name: "Napolitana", prices: [48.00, 41.00, 34.00], desc: "Mussarela, parmesão e tomate", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "35", name: "Palmito", prices: [58.00, 51.00, 44.00], desc: "Palmito, mussarela e requeijão", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "36", name: "Parisiense", prices: [60.00, 53.00, 46.00], desc: "Frango, mussarela, requeijão e milho", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "37", name: "Peperonni", prices: [66.00, 59.00, 52.00], desc: "Peperonni, mussarela, champignon e cebola", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "38", name: "Peruana", prices: [64.00, 57.00, 50.00], desc: "Peito de peru, mussarela, requeijão e champignon", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "39", name: "Picanha", prices: [75.00, 68.00, 61.00], desc: "Picanha, mussarela, alho e cebola", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "40", name: "Picanha brasileira", prices: [82.00, 75.00, 68.00], desc: "Picanha, mussarela, batata frita e champignon", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "41", name: "Pizza sete", prices: [62.00, 55.00, 48.00], desc: "Calabresa, provolone, presunto, palmito e ovo", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "42", name: "Pizzaiolo", prices: [68.00, 61.00, 54.00], desc: "Peito de peru, calabresa, mussarela, requeijão e champignon", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "43", name: "Portuguesa", prices: [60.00, 53.00, 46.00], desc: "Presunto, mussarela, palmito, ovo e ervilha", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "44", name: "Quatro queijos", prices: [68.00, 61.00, 54.00], desc: "Mussarela, requeijão, provolone e gorgonzola", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "45", name: "Rúcula", prices: [54.00, 47.00, 40.00], desc: "Rúcula, mussarela e tomate seco", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "46", name: "Salame", prices: [58.00, 51.00, 44.00], desc: "Salame e mussarela", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "47", name: "Sardinha", prices: [66.00, 59.00, 52.00], desc: "Sardinha, mussarela e cebola", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "48", name: "Saudade", prices: [60.00, 53.00, 46.00], desc: "Calabresa, mussarela, presunto, cebola e ervilha", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "49", name: "Sedução", prices: [60.00, 53.00, 46.00], desc: "Calabresa, mussarela, requeijão e champignon", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "50", name: "Strogonoff carne", prices: [62.00, 55.00, 48.00], desc: "Carne, creme de leite, champignon e batata palha", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "51", name: "Strogonoff frango", prices: [55.00, 48.00, 41.00], desc: "Frango, creme de leite, champignon e batata palha", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "52", name: "Temaki", prices: [86.00, 79.00, 72.00], desc: "Atum, cream cheese, mussarela, couve e tarê", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "53", name: "Trapânia", prices: [70.00, 63.00, 56.00], desc: "Calabresa, mussarela, provolone, requeijão e milho", type: "salgada", img: IMG_PIZZA_5 },
+      { num: "54", name: "Toscana", prices: [54.00, 47.00, 40.00], desc: "Calabresa, mussarela e cebola", type: "salgada", img: IMG_PIZZA_3 },
+      { num: "55", name: "Um Sonho", prices: [60.00, 53.00, 46.00], desc: "Presunto, mussarela, requeijão e bacon", type: "salgada", img: IMG_PIZZA_4 },
+      { num: "56", name: "Você decide", prices: [65.00, 58.00, 51.00], desc: "Cinco recheios à sua escolha - grupo laranja", type: "salgada", img: IMG_PIZZA_1 },
+      { num: "57", name: "Você decide+", prices: [90.00, 83.00, 76.00], desc: "Cinco recheios à sua escolha - grupo azul", type: "salgada", img: IMG_PIZZA_2 },
+      { num: "58", name: "Banana", prices: [54.00, 47.00, 40.00], desc: "Banana, mussarela, leite condensado e canela", type: "doce", img: IMG_DOCE },
+      { num: "59", name: "Brigadeiro", prices: [49.00, 42.00, 35.00], desc: "Brigadeiro, granulado e cereja", type: "doce", img: IMG_DOCE },
+      { num: "60", name: "Choco Branco", prices: [58.00, 51.00, 44.00], desc: "Chocolate branco e morango", type: "doce", img: IMG_DOCE },
+      { num: "61", name: "Confete", prices: [49.00, 42.00, 35.00], desc: "Brigadeiro e confete", type: "doce", img: IMG_DOCE },
+      { num: "62", name: "Galak Óreo", prices: [58.00, 51.00, 44.00], desc: "Creme óreo com biscoito óreo", type: "doce", img: IMG_DOCE },
+      { num: "63", name: "Kit Kat", prices: [60.00, 51.00, 44.00], desc: "Creme Kit Kat com pedaços de chocolate", type: "doce", img: IMG_DOCE },
+      { num: "64", name: "Meia Lua", prices: [60.00, 53.00, 46.00], desc: "Brigadeiro, meia chocolate amargo, meia chocolate branco e morango", type: "doce", img: IMG_DOCE },
+      { num: "65", name: "Nutella", prices: [60.00, 53.00, 46.00], desc: "Nutella e morango", type: "doce", img: IMG_DOCE },
+      { num: "66", name: "Ovomaltine", prices: [60.00, 53.00, 46.00], desc: "Creme de ovomaltine e morango", type: "doce", img: IMG_DOCE },
+      { num: "67", name: "Romeu e julieta", prices: [54.00, 47.00, 40.00], desc: "Goiabada, creme de leite, mussarela e canela", type: "doce", img: IMG_DOCE }
+    ];
+
+    const BORDAS = [
+      { name: "Borda Requeijão", price: 5.00 },
+      { name: "Borda Cheddar", price: 5.00 },
+      { name: "Borda Frango", price: 10.00 },
+      { name: "Borda Mussarela", price: 10.00 },
+      { name: "Borda Chocolate", price: 10.00 }
+    ];
+
+    const ADDONS = [
+      { price: 3.00, items: ["Abobrinha", "Azeitona Preta", "Banana", "Batata Palha", "Ervilha", "Manjericão", "Milho", "Ovo", "Pimenta Calabresa", "Tomate"] },
+      { price: 5.00, items: ["Alho Triturado", "Bacon", "Cebola", "Cereja", "Confete", "Creme de Leite", "Escralo", "Goiabada", "Granulado", "Hamburguer", "Leite Condensado", "Morango", "Parmesão", "Rúcula", "Champignon"] },
+      { price: 10.00, items: ["Atum", "Batata Frita", "Brigadeiro", "Brócolis", "Calabresa", "Cheddar", "Frango", "Gorgonzola", "Lombinho", "Palmito", "Peito de Peru", "Peperonni", "Presunto", "Requeijão", "Salame", "Tomate Seco"] },
+      { price: 18.00, items: ["Creme de Ovo Maltine", "Mussarela", "Nutella"] },
+      { price: 32.00, items: ["Camarão", "Carne Seca", "Picanha"] }
+    ];
+
+    const PARMEGIANAS = [
+      { name: "Parmegiana de Alcatra", price: 96.00, desc: "Alcatra c/ cebola 700g, arroz 400g e fritas 500g" },
+      { name: "Parmegiana de Frango", price: 82.00, desc: "Frango c/ milho 700g, arroz 400g e fritas 500g" },
+      { name: "Parmegiana de Mignon", price: 110.00, desc: "Mignon c/ ervilha 700g, arroz 400g e fritas 500g" }
+    ];
+
+    const PORCOES = [
+      { name: "Arroz", price: 12.00, desc: "Arroz branco 500g" },
+      { name: "Azeitona", price: 15.00, desc: "Azeitona 500g" },
+      { name: "Focaccia", price: 15.00, desc: "Massa com alho e azeite" },
+      { name: "Fritas", price: 30.00, desc: "Batata frita 500g" },
+      { name: "Fritas c/ bacon ou queijo", price: 35.00, desc: "Batata frita 500g, queijo ou bacon 200g" },
+      { name: "Fritas completa", price: 40.00, desc: "Batata frita 500g, queijo 200g, bacon 200g" },
+      { name: "Frios", price: 55.00, desc: "Mussarela 250g, presunto 250g, lombinho 250g e azeitona preta 250g" }
+    ];
+
+    const BEBIDAS = [
+      { name: "Refrigerante Lata", price: 5.00 },
+      { name: "Refrigerante 600ml", price: 6.00 },
+      { name: "Refrigerante 1,5L", price: 7.50 },
+      { name: "Refrigerante 2L", price: 9.00 },
+      { name: "Guaranita Cibal 2L", price: 7.00 },
+      { name: "Guaranita Cibal 600ml", price: 5.50 },
+      { name: "Suco Del Valle Lata", price: 5.50 },
+      { name: "Suco Del Valle 1L", price: 10.00 }
+    ];
+
+    const CERVEJAS = [
+      { name: "Cerveja Lata", price: 5.00 },
+      { name: "Cerveja Long Neck Skol / Brahma / Malzbier", price: 7.00 },
+      { name: "Cerveja Long Neck Stella / Heineken", price: 7.50 },
+      { name: "Cerveja Skol ou Brahma - Garrafa", price: 9.00 },
+      { name: "Cerveja Antarctica - Garrafa", price: 8.50 },
+      { name: "Cerveja Bohemia / Brahma Extra / Original", price: 10.00 },
+      { name: "Serra Malte / Heineken", price: null, note: "Consultar" },
+      { name: "Cerveja Skol Mega (550ml)", price: 7.00 },
+      { name: "Cerveja Skol Latão (473ml)", price: 6.00 },
+      { name: "Cerveja Long Neck 0 Álcool", price: 7.00 }
+    ];
+
+    const VINHOS = [
+      { name: "Garrafa Vinho Dani", price: 16.00 },
+      { name: "Jarra de Suco de Uva", price: 16.00 },
+      { name: "Jarra de Vinho", price: 16.00 },
+      { name: "Taça de Suco de Uva Integral", price: 7.00 },
+      { name: "Taça de Vinho", price: 7.00 }
+    ];
+
+    const POLPAS = [
+      "Abacaxi", "Abacaxi c/ Hortelã", "Acerola", "Acerola c/ Laranja",
+      "Caju", "Cupuaçu", "Graviola", "Goiaba", "Laranja (Natural)",
+      "Limão", "Manga", "Maracujá", "Morango", "Pêssego", "Uva"
+    ];
+
+    const SIZES = ["Grande", "Média", "Broto"];
+    let activeFilter = "todas";
+    let searchTerm = "";
+    let bag = [];
+
+    function money(v) {
+      return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    function addItem(label, price, kind = "item") {
+      const existing = bag.find(i => i.label === label && i.price === price);
+      if (existing) existing.qty += 1;
+      else bag.push({ label, price, qty: 1, kind });
+      refreshBag();
+    }
+
+    function updateQty(index, delta) {
+      bag[index].qty += delta;
+      if (bag[index].qty <= 0) bag.splice(index, 1);
+      refreshBag();
+      renderBagModal();
+    }
+
+    function calcPackaging() {
+      if (!document.getElementById("takeoutBox").checked) return 0;
+      return bag.reduce((acc, item) => {
+        if (item.kind === "pizza") return acc + 2.00 * item.qty;
+        if (item.kind === "parmegiana") return acc + 4.00 * item.qty;
+        return acc;
+      }, 0);
+    }
+
+    function calcTotal() {
+      return bag.reduce((acc, item) => acc + item.price * item.qty, 0) + calcPackaging();
+    }
+
+    function refreshBag() {
+      const count = bag.reduce((s, i) => s + i.qty, 0);
+      const bar = document.getElementById("bagBar");
+      if (count === 0) {
+        bar.classList.add("hidden");
+        document.getElementById("bagModal").classList.remove("open");
+        return;
+      }
+      bar.classList.remove("hidden");
+      document.getElementById("bagCount").textContent = `${count} ${count === 1 ? "item" : "itens"}`;
+      document.getElementById("bagTotal").textContent = money(calcTotal());
+      document.getElementById("modalTotal").textContent = money(calcTotal());
+    }
+
+    function renderPizzas() {
+      const grid = document.getElementById("pizzaGrid");
+      const filtered = PIZZAS.filter(p => {
+        const matchType = activeFilter === "todas" || p.type === activeFilter;
+        const matchText =
+          !searchTerm ||
+          p.num.includes(searchTerm) ||
+          p.name.toLowerCase().includes(searchTerm) ||
+          p.desc.toLowerCase().includes(searchTerm);
+        return matchType && matchText;
+      });
+
+      document.getElementById("pizzaCount").textContent =
+        `Exibindo ${filtered.length} de ${PIZZAS.length} sabores`;
+
+      if (!filtered.length) {
+        grid.innerHTML = `<p class="no-results">Nenhum sabor encontrado para "${searchTerm}".</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const sizeButtons = p.prices.map((pr, idx) => {
+          if (pr === null) {
+            return `<span class="size-off"><small>${SIZES[idx]}</small><span>—</span></span>`;
+          }
+          const title = `Pizza ${p.num} ${p.name} (${SIZES[idx]})`;
+          return `
+            <button type="button" class="size-btn" onclick="addItem('${title.replace(/'/g, "\\'")}', ${pr}, 'pizza')">
+              <small>${SIZES[idx]}</small>
+              <strong>${money(pr)}</strong>
+            </button>
+          `;
+        }).join("");
+
+        return `
+          <article class="pizza-card ${p.type === "doce" ? "is-sweet" : ""}">
+            <div class="pizza-media">
+              <img src="${p.img}" alt="${p.name}" loading="lazy">
+              <span class="pizza-num">#${p.num}</span>
+              <span class="pizza-badge ${p.type === "doce" ? "sweet" : "savory"}">${p.type === "doce" ? "Doce" : "Salgada"}</span>
+            </div>
+            <div class="pizza-content">
+              <h3>${p.name}</h3>
+              <p class="pizza-desc">${p.desc}</p>
+              <div class="size-grid">${sizeButtons}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderRows(elementId, list, kind = "item") {
+      document.getElementById(elementId).innerHTML = list.map(item => `
+        <div class="row-item">
+          <div class="row-info">
+            <strong>${item.name}</strong>
+            ${item.desc ? `<p>${item.desc}</p>` : ""}
+          </div>
+          ${
+            item.price !== null
+              ? `<button type="button" class="pick-btn" onclick="addItem('${item.name.replace(/'/g, "\\'")}', ${item.price}, '${kind}')">+ ${money(item.price)}</button>`
+              : `<span class="consult-tag">${item.note}</span>`
+          }
+        </div>
+      `).join("");
+    }
+
+    function renderAddons() {
+      document.getElementById("addonsList").innerHTML = ADDONS.map(group => `
+        <div class="addon-group">
+          <div class="addon-price-label">Acréscimos de ${money(group.price)}</div>
+          <div class="addon-chips">
+            ${group.items.map(name => `
+              <button type="button" class="chip-add" onclick="addItem('Acréscimo ${name}', ${group.price})">
+                + ${name}
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderJuices() {
+      const polpaCards = POLPAS.map(sabor => `
+        <div class="juice-item">
+          <strong>${sabor}</strong>
+          <div class="juice-btns">
+            <button type="button" onclick="addItem('${sabor} - Copo c/ Água', 6.00)">Copo Água • R$ 6</button>
+            <button type="button" onclick="addItem('${sabor} - Copo c/ Leite', 7.00)">Copo Leite • R$ 7</button>
+            <button type="button" onclick="addItem('${sabor} - Jarra c/ Água', 14.00)">Jarra Água • R$ 14</button>
+            <button type="button" onclick="addItem('${sabor} - Jarra c/ Leite', 16.00)">Jarra Leite • R$ 16</button>
+          </div>
+        </div>
+      `).join("");
+
+      const limonadaCard = `
+        <div class="juice-item swiss">
+          <strong>Limonada Suíça</strong>
+          <div class="juice-btns">
+            <button type="button" onclick="addItem('Limonada Suíça - Copo', 8.00)">Copo • R$ 8,00</button>
+            <button type="button" onclick="addItem('Limonada Suíça - Jarra', 18.00)">Jarra • R$ 18,00</button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("juicesList").innerHTML = polpaCards + limonadaCard;
+    }
+
+    function renderBagModal() {
+      const container = document.getElementById("bagItems");
+      if (!bag.length) {
+        container.innerHTML = "<p>Nenhum item na sacola.</p>";
+        return;
+      }
+      container.innerHTML = bag.map((item, idx) => `
+        <div class="bag-line">
+          <div>
+            <strong>${item.label}</strong>
+            <span>${money(item.price)} cada</span>
+          </div>
+          <div class="qty-ctrl">
+            <button type="button" onclick="updateQty(${idx}, -1)">-</button>
+            <span>${item.qty}</span>
+            <button type="button" onclick="updateQty(${idx}, 1)">+</button>
+          </div>
+        </div>
+      `).join("");
+      document.getElementById("modalTotal").textContent = money(calcTotal());
+    }
+
+    document.getElementById("pizzaSearch").addEventListener("input", e => {
+      searchTerm = e.target.value.trim().toLowerCase();
+      renderPizzas();
+    });
+
+    document.getElementById("typeFilter").addEventListener("click", e => {
+      if (!e.target.classList.contains("pill-btn")) return;
+      document.querySelectorAll(".pill-btn").forEach(btn => btn.classList.remove("active"));
+      e.target.classList.add("active");
+      activeFilter = e.target.dataset.filter;
+      renderPizzas();
+    });
+
+    document.getElementById("openBagBtn").addEventListener("click", () => {
+      renderBagModal();
+      document.getElementById("bagModal").classList.add("open");
+    });
+
+    document.getElementById("closeBagBtn").addEventListener("click", () => {
+      document.getElementById("bagModal").classList.remove("open");
+    });
+
+    document.getElementById("bagModal").addEventListener("click", e => {
+      if (e.target.id === "bagModal") document.getElementById("bagModal").classList.remove("open");
+    });
+
+    document.getElementById("takeoutBox").addEventListener("change", () => {
+      refreshBag();
+      renderBagModal();
+    });
+
+    document.getElementById("sendWhatsBtn").addEventListener("click", () => {
+      if (!bag.length) return;
+      const msg = ["Olá, Pizza 7! Segue meu pedido:\n"];
+      bag.forEach(i => msg.push(`• ${i.qty}x ${i.label} — ${money(i.price * i.qty)}`));
+      const pack = calcPackaging();
+      if (pack > 0) msg.push(`• Embalagem viagem — ${money(pack)}`);
+      const obs = document.getElementById("obsText").value.trim();
+      if (obs) msg.push(`\n*Observações:* ${obs}`);
+      msg.push(`\n*Total estimado:* ${money(calcTotal())}`);
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg.join("\n"))}`, "_blank");
+    });
+
+    renderPizzas();
+    renderRows("parmegianasList", PARMEGIANAS, "parmegiana");
+    renderRows("porcoesList", PORCOES);
+    renderRows("bordasList", BORDAS);
+    renderAddons();
+    renderRows("refriList", BEBIDAS);
+    renderRows("cervejasList", CERVEJAS);
+    renderRows("vinhosList", VINHOS);
+    renderJuices();
+  </script>
+</body>
+</html>
